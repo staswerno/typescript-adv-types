@@ -1,4 +1,4 @@
-// intersection types
+// **intersection types**
 // similar to interfaces, bit less code
 
 type Admin = {
@@ -26,7 +26,7 @@ type Numeric = number | boolean;
 
 type Universal = Combinable & Numeric;
 
-// type guards
+// **type guards**
 // if statement below is a type guard
 
 function add(a: Combinable, b: Combinable) {
@@ -54,7 +54,7 @@ function printEmployeeInformation(emp: UnknownEmployee) {
 printEmployeeInformation(e1);
 printEmployeeInformation({ name: "Jopi", startDate: new Date() });
 
-// instanceof typeguard (js)
+// **instanceof typeguard** (js)
 // works only with classes, not instances
 
 class Car {
@@ -86,3 +86,39 @@ function useVehicle(vehicle: Vehicle) {
 
 useVehicle(v1);
 useVehicle(v2);
+
+// **discriminated unions**
+// works with object types/interfaces
+// use common property to describe object
+// use common property in switch check
+
+interface Bird {
+	type: "bird";
+	flyingSpeed: number;
+}
+
+interface Horse {
+	type: "horse";
+	runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+// 2 kinds of speed
+// type check can get bulky with many animals
+// instanceof doesn't work with interface as not compliled to js
+
+function moveAnimal(animal: Animal) {
+	let speed;
+	switch (animal.type) {
+		case "bird":
+			speed = animal.flyingSpeed;
+			break;
+		case "horse":
+			speed = animal.runningSpeed;
+			break;
+	}
+	console.log("Moving with speed: " + speed);
+}
+
+moveAnimal({ type: "bird", flyingSpeed: 12 });
