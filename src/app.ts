@@ -122,3 +122,27 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({ type: "bird", flyingSpeed: 12 });
+
+// typecasting
+// used when ts can't figure out type
+// eg getElementById - ts doesn't know exact html element
+
+const paragraph = document.getElementById("message-output");
+// const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
+const userInputElement = document.getElementById(
+	"user-input"
+)! as HTMLInputElement;
+
+// ! tells TS preceding expression will never yield null
+// otherwise use if check. remove type cast from getElement line, then see below*
+// but need to tell TS it's an input element
+// <with type casting> - DOM
+// ! as with type casting - React
+// choose, don't alternate
+
+userInputElement.value = "Hi!";
+
+// *
+if (userInputElement) {
+	(userInputElement as HTMLInputElement).value = "Hi there!";
+}
