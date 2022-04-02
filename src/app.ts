@@ -146,3 +146,23 @@ userInputElement.value = "Hi!";
 if (userInputElement) {
 	(userInputElement as HTMLInputElement).value = "Hi there!";
 }
+
+// index types
+// good for flexible objects
+// eg different error messages for multiple input fields
+// want to use containter on any form
+// clear on value, not clear on number or name of properties
+
+interface ErrorContainer {
+	// { email: 'Not a valid email', username: 'Must start with a character'}
+	[prop: string]: string;
+	// stings/numbers/Symbols
+	// saying: dk property name or count
+	// just know every property name and value is string
+	// can no only use strings
+}
+
+const errorBag: ErrorContainer = {
+	email: "Not a valid email!",
+	username: "Must start with capital letter!",
+};
