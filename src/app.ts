@@ -34,6 +34,7 @@ type Universal = Combinable & Numeric;
 
 function add(a: number, b: number): number;
 function add(a: string, b: number): number;
+function add(a: number, b: string): number;
 function add(a: string, b: string): string;
 function add(a: Combinable, b: Combinable) {
 	if (typeof a === "string" || typeof b === "string") {
@@ -45,7 +46,7 @@ function add(a: Combinable, b: Combinable) {
 const result = add("Stasi", " Werni");
 result.split(" ");
 // split won't work alsone cos TS knows string or no
-// use function overload to resolve
+// so use function overload (above) to resolve
 
 // typeof won't find 'privileges' property below
 // another type guard needed: if ("property" in x) {}
