@@ -29,12 +29,23 @@ type Universal = Combinable & Numeric;
 // **type guards**
 // if statement below is a type guard
 
+// function overload
+// allows multiple ways of calling a function
+
+function add(a: number, b: number): number;
+function add(a: string, b: number): number;
+function add(a: string, b: string): string;
 function add(a: Combinable, b: Combinable) {
 	if (typeof a === "string" || typeof b === "string") {
 		return a.toString() + b.toString();
 	}
 	return a + b;
 }
+
+const result = add("Stasi", " Werni");
+result.split(" ");
+// split won't work alsone cos TS knows string or no
+// use function overload to resolve
 
 // typeof won't find 'privileges' property below
 // another type guard needed: if ("property" in x) {}
