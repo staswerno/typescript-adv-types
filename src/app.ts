@@ -48,6 +48,7 @@ result.split(" ");
 // split won't work alsone cos TS knows string or no
 // so use function overload (above) to resolve
 
+//
 // optional chaining operator
 // helps safely access nested properties/objects
 
@@ -61,6 +62,19 @@ const fetchedUserData = {
 // js way to check
 
 console.log(fetchedUserData?.job?.title);
+
+//
+// nullish coalescing
+// store fallback value if null/undefined
+
+const userInput = null;
+
+//
+// js way - prints DEFAULT with empty string, not just null/undefined
+// const storedData = userInput || 'DEFAULT';
+
+// ONLY if null/undefined
+const storedData = userInput ?? "DEFAULT";
 
 // typeof won't find 'privileges' property below
 // another type guard needed: if ("property" in x) {}
