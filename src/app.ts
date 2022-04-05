@@ -48,6 +48,20 @@ result.split(" ");
 // split won't work alsone cos TS knows string or no
 // so use function overload (above) to resolve
 
+// optional chaining operator
+// helps safely access nested properties/objects
+
+const fetchedUserData = {
+	id: "u1",
+	name: "Max",
+	job: { title: "CEO", description: "My own company" },
+};
+
+// console.log(fetchedUserData.job && fetchedUserData.job.title);
+// js way to check
+
+console.log(fetchedUserData?.job?.title);
+
 // typeof won't find 'privileges' property below
 // another type guard needed: if ("property" in x) {}
 
